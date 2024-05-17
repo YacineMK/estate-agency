@@ -1,8 +1,9 @@
-import { CircleGauge, LogOut, Package2 } from "lucide-react";
-
+import { HiHomeModern } from "react-icons/hi2";
+import { FaChartBar } from "react-icons/fa";
 import { buttonVariants } from "@/components/ui/button";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { SIDEBAR_ITEMS } from "./data";
+import { MdOutlineAdminPanelSettings } from "react-icons/md";
 import { cn } from "@/lib/utils";
 import { isActiveSideBar } from "@/utils/paths";
 
@@ -13,7 +14,7 @@ const Sidebar = () => {
       <div className="flex h-full bg-white text-black max-h-screen flex-col gap-2 px-2 lg:px-4 lg:gap-4">
         <div className="flex h-14 items-center border-b px-4 lg:h-[60px]">
           <Link to="/" className="flex items-center gap-2 font-semibold">
-            <Package2 className="h-6 w-6" />
+            <HiHomeModern className="w-6 h-6" />
             <span>omar immobilier</span>
           </Link>
         </div>
@@ -52,7 +53,7 @@ const Sidebar = () => {
                 "hover:bg-[#FF7000]"
               )}
             >
-              <CircleGauge className="h-5 w-5" />
+              <FaChartBar className="h-5 w-5" />
               Dashboard
             </NavLink>
             <NavLink
@@ -68,7 +69,7 @@ const Sidebar = () => {
                 !isActiveSideBar(pathname, "/admin") && "hover:bg-[#FF7000]"
               )}
             >
-              <CircleGauge className="h-5 w-5" />
+              <MdOutlineAdminPanelSettings className="h-5 w-5" />
               Administrateur
             </NavLink>
           </nav>

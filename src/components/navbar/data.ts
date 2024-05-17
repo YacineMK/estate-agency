@@ -1,11 +1,9 @@
-import {
-  Building,
-  Home,
-  User,
-} from "lucide-react";
+import { IoHomeSharp } from "react-icons/io5";
+import { TbBuildingEstate } from "react-icons/tb";
+import { GrUserWorker } from "react-icons/gr";
 
 export const SIDEBAR_ITEMS = [
-  { label: "Accueil", to: "/", Icon: Home },
-  { label: "Immobiliers", to: "/real-estate", Icon: Building },
-  { label: "workers", to: "/workers", Icon: User },
+  { label: "Home", to: "/", Icon: IoHomeSharp },
+  { label: "Real Estate", to: "/real-estate", Icon: TbBuildingEstate },
+  { label: "workers", to: "/workers", Icon: GrUserWorker },
 ];

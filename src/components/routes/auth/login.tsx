@@ -34,14 +34,14 @@ export default function Login() {
   }
 
   return (
-    <div className="w-[100vw] lg:grid flex  bg-white justify-center items-center min-h-screen">
+    <div className="w-[100vw] lg:grid flex  bg-white text-black justify-center items-center min-h-screen">
       <div className="flex flex-col p-4 min-h-screen">
         <div className="flex-1 flex justify-center items-center py-4">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)}>
               <div className="mx-auto grid w-full max-w-[350px] gap-6">
                 <div className="grid gap-2 text-center">
-                  <h1 className="text-3xl text-white font-bold">welcome to omar immobilier</h1>
+                  <h1 className="text-3xl text-black font-bold">welcome to omar immobilier</h1>
                 </div>
                 <div className="grid gap-4">
                   <FormField
@@ -70,10 +70,10 @@ export default function Login() {
                     name="password"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Mot de passe</FormLabel>
+                        <FormLabel>Password</FormLabel>
                         <FormControl>
                           <Input
-                            placeholder="••••••"
+                            placeholder="•••••"
                             type="password"
                             className={cn(
                               form.getFieldState("password").error &&
@@ -87,13 +87,13 @@ export default function Login() {
                     )}
                   />
                   <Button type="submit" className="w-full">
-                    Connexion
+                    submit
                   </Button>
                 </div>
                 <div className="mt-4 text-center text-sm">
-                  Vous n&apos;avez pas de compte ?{" "}
+                  did u have account ?{" "}
                   <Link to="/signup" className="underline font-semibold">
-                    Inscrivez-vous
+                    join us
                   </Link>
                 </div>
               </div>
