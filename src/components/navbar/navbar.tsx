@@ -26,9 +26,9 @@ const Navbar = () => {
   const { pathname } = useLocation();
   const breadcrumbItems = generateBreadcrumbPaths(pathname);
   return (
-    <header className="flex h-[90px] items-center gap-4 border-b bg-black text-white px-4 lg:h-[60px] lg:px-6">
+    <header className="flex h-[90px] items-center gap-4 border-b bg-white text-black px-4 lg:h-[60px] lg:px-6">
       <SidebarMobile />
-      <div className="w-full bg-black text-white flex-1">
+      <div className="w-full bg-white text-black flex-1">
         <Breadcrumb className="hidden lg:flex">
           <BreadcrumbList>
             {breadcrumbItems.length > 0 ? (
@@ -50,9 +50,6 @@ const Navbar = () => {
               </>
             ) : (
               <>
-                <BreadcrumbItem>
-                  <BreadcrumbPage>Accueil</BreadcrumbPage>
-                </BreadcrumbItem>
               </>
             )}
           </BreadcrumbList>

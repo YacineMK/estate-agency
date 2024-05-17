@@ -1,9 +1,8 @@
-import { CircleGauge, LogOut, Menu, Package2 } from "lucide-react";
+import { Menu,  } from "lucide-react";
 import { Link, NavLink } from "react-router-dom";
 
-import { Button, buttonVariants } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { cn } from "@/lib/utils";
 import { SIDEBAR_ITEMS } from "./data";
 
 const SidebarMobile = () => {
@@ -21,7 +20,7 @@ const SidebarMobile = () => {
         className="flex flex-col w-full xs:max-w-sm p-4 lg:hidden"
         overlayClassName="lg:hidden"
       >
-        <nav className="grid gap-8 bg-black text-white text-lg font-medium">
+        <nav className="grid gap-8 bg-white text-black text-lg font-medium">
           <Link
             to="/"
             className="flex items-center gap-2 text-lg font-semibold px-4"
@@ -38,20 +37,6 @@ const SidebarMobile = () => {
                 {label}
               </NavLink>
             ))}
-
-            <NavLink
-              to={"/dashboard"}
-              z
-            >
-              dashboard
-            </NavLink>
-
-
-            <NavLink
-              to={"/admin"}
-            >
-              Admin
-            </NavLink>
 
           </div>
         </nav>

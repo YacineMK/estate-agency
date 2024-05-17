@@ -9,8 +9,8 @@ import { isActiveSideBar } from "@/utils/paths";
 const Sidebar = () => {
   const { pathname } = useLocation();
   return (
-    <div className="hidden bg-black text-white border-r bg-muted/40 lg:block">
-      <div className="flex h-full bg-black text-white max-h-screen flex-col gap-2 px-2 lg:px-4 lg:gap-4">
+    <div className="hidden bg-white text-black border-r bg-muted/40 lg:block">
+      <div className="flex h-full bg-white text-black max-h-screen flex-col gap-2 px-2 lg:px-4 lg:gap-4">
         <div className="flex h-14 items-center border-b px-4 lg:h-[60px]">
           <Link to="/" className="flex items-center gap-2 font-semibold">
             <Package2 className="h-6 w-6" />
@@ -53,7 +53,7 @@ const Sidebar = () => {
               )}
             >
               <CircleGauge className="h-5 w-5" />
-              Tableau de bord
+              Dashboard
             </NavLink>
             <NavLink
               to={"/admin"}

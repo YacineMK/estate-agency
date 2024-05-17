@@ -8,9 +8,9 @@ export default function Root() {
   const isAdmin = true;
   return (
     <ScrollArea className="w-screen h-screen">
-      <div className="grid bg-black text-white h-screen w-full lg:grid-cols-[280px_1fr]">
+      <div className="grid bg-white text-black h-screen w-full lg:grid-cols-[280px_1fr]">
         <Sidebar />
-        <div className="flex flex-col bg-black text-white ">
+        <div className="flex flex-col bg-white text-black ">
           <Navbar />
           <ScrollArea className="w-full h-[calc(100vh-56px)] lg:h-[calc(100vh-60px)]">
             <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6 min-h-[calc(100vh-56px)] lg:min-h-[calc(100vh-60px)]">

@@ -26,15 +26,15 @@ export default function Login() {
     toast({
       title: "You submitted the following values:",
       description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
+        <pre className="mt-2 w-[340px] rounded-md bg-white p-4">
+          <code className="text-black">{JSON.stringify(data, null, 2)}</code>
         </pre>
       ),
     });
   }
 
   return (
-    <div className="w-[100vw] lg:grid flex justify-center items-center min-h-screen">
+    <div className="w-[100vw] lg:grid flex  bg-white justify-center items-center min-h-screen">
       <div className="flex flex-col p-4 min-h-screen">
         <div className="flex-1 flex justify-center items-center py-4">
           <Form {...form}>
@@ -73,7 +73,7 @@ export default function Login() {
                         <FormLabel>Mot de passe</FormLabel>
                         <FormControl>
                           <Input
-                            placeholder="••••••••"
+                            placeholder="••••••"
                             type="password"
                             className={cn(
                               form.getFieldState("password").error &&

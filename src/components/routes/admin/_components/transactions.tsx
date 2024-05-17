@@ -17,12 +17,12 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Link } from "react-router-dom";
+
 import { Transaction } from "@/data/db";
 
 export default function Transactions() {
   return (
-    <Card className="xl:max-w-xl bg-black text-white 2xl:max-w-full">
+    <Card className="xl:max-w-xl bg-white text-black 2xl:max-w-full">
       <CardHeader className="flex flex-row gap-6 space-y-0">
         <div className="grid gap-2">
           <CardTitle>Transactions</CardTitle>

@@ -17,28 +17,28 @@ import { Agents } from "@/data/db";
 
 export default function AGents() {
     return (
-        <Card className="rounded-lg w-[100vh] ">
-            <CardHeader className="flex bg-black text-white flex-row gap-6 space-y-0">
+        <Card className="rounded-lg w-[1200px] ">
+            <CardHeader className="flex bg-white text-black flex-row gap-6 space-y-0">
                 <div className="grid gap-2">
                     <CardTitle>Top Agents</CardTitle>
                     <CardDescription
-                        className="bg-black  line-clamp-2"
+                        className="  line-clamp-2"
                         title=""
                     >
                         last Contracts
                     </CardDescription>
                 </div>
             </CardHeader>
-            <CardContent className="grid bg-black text-white gap-8">
-                <Table>
-                    <TableHeader className="bg-black text-white">
+            <CardContent className="grid bg-white text-black gap-8">
+                <Table className="w-[1200px]">
+                    <TableHeader className="bg-white w-[1200px] text-black">
                         <TableRow className="text-gray-800">
                             <TableHead>id</TableHead>
                             <TableHead>name</TableHead>
                             <TableHead>Transactions by Agent</TableHead>
                         </TableRow>
                     </TableHeader>
-                    <TableBody className="bg-black text-white">
+                    <TableBody className="bg-white w-[1200px] text-black">
                         {Agents.map(({ idAgent, Agentname, TransactionsbyAgent }) => (
                             <TableRow>
                                 <TableCell>
