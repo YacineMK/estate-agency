@@ -7,6 +7,8 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis } from 'recharts';
+
 
 const data = [
   {
@@ -53,14 +55,53 @@ const data = [
   },
 ];
 
+const dato = [
+  {
+    subject: 'Math',
+    A: 120,
+    B: 110,
+    fullMark: 150,
+  },
+  {
+    subject: 'Chinese',
+    A: 98,
+    B: 130,
+    fullMark: 150,
+  },
+  {
+    subject: 'English',
+    A: 86,
+    B: 130,
+    fullMark: 150,
+  },
+  {
+    subject: 'Geography',
+    A: 99,
+    B: 100,
+    fullMark: 150,
+  },
+  {
+    subject: 'Physics',
+    A: 85,
+    B: 90,
+    fullMark: 150,
+  },
+  {
+    subject: 'History',
+    A: 65,
+    B: 85,
+    fullMark: 150,
+  },
+];
+
 const Dashboard = () => {
   return (
     <div className="flex flex-col mx-[2%]">
-      
-      <h1 className='font-semibold text-xl mb-8 '>Dashboard</h1>
-      <h1 className='pl-4 font-medium text-lg mb-8 '>wekly raports</h1>
 
-      <div className="flex w-full justify-center mb-20 gap-8">
+      <h1 className='font-semibold text-xl mb-8 '>Dashboard</h1>
+      <h1 className='pl-4 font-medium text-lg mb-8 '>Weekly Rapport</h1>
+
+      <div className="flex w-full justify-center mb-10 gap-8">
         <Card className="w-[350px] py-2 text-left">
           <CardHeader>
             <CardTitle className="mb-2">Agents</CardTitle>
@@ -97,30 +138,40 @@ const Dashboard = () => {
             <p className="font-bold text-4xl">+200</p>
           </CardContent>
         </Card>
-        
       </div>
-      <div className=' w-[600px] h-[300px] '>
-        <ResponsiveContainer width="100%" height="100%">
-          <LineChart
-            width={500}
-            height={300}
-            data={data}
-            margin={{
-              top: 5,
-              right: 30,
-              left: 20,
-              bottom: 5,
-            }}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Line type="monotone" dataKey="pv" stroke="#FF7000" activeDot={{ r: 8 }} />
-            <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
-          </LineChart>
-        </ResponsiveContainer>
+      <h1 className='pl-4 font-medium text-lg mb-10 '>Rapport</h1>
+      <div className="flex justify-around">
+        <div className=' w-[700px] h-[400px] rounded-md border border-black '>
+          <ResponsiveContainer className="pt-6 pb-4 px-4" width="100%" height="100%">
+            <LineChart
+              data={data}
+              margin={{
+                top: 5,
+                right: 30,
+                left: 20,
+                bottom: 5,
+              }}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="name" />
+              <YAxis />
+              <Tooltip />
+              <Legend />
+              <Line type="monotone" dataKey="pv" stroke="#FF7000" activeDot={{ r: 8 }} />
+              <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
+        <div className=' w-[700px] h-[400px] rounded-md border border-black '>
+          <ResponsiveContainer width="100%" height="100%">
+            <RadarChart cx="50%" cy="50%" outerRadius="80%" data={dato}>
+              <PolarGrid />
+              <PolarAngleAxis dataKey="subject" />
+              <PolarRadiusAxis />
+              <Radar name="Mike" dataKey="A" stroke="#FF7000" fill="#FF7000" fillOpacity={0.6} />
+            </RadarChart>
+          </ResponsiveContainer>
+        </div>
       </div>
     </div>
   );

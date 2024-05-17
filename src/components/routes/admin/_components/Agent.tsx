@@ -17,7 +17,7 @@ import { Agents } from "@/data/db";
 
 export default function AGents() {
     return (
-        <Card className="rounded-lg w-[1200px] ">
+        <Card className="rounded-lg w-[1000px] ">
             <CardHeader className="flex bg-white text-black flex-row gap-6 space-y-0">
                 <div className="grid gap-2">
                     <CardTitle>Top Agents</CardTitle>
