@@ -1,7 +1,6 @@
 import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom";
 import Admin from "./components/routes/admin";
 import Login from "./components/routes/auth/login";
-import Signup from "./components/routes/auth/signup";
 import Dashboard from "./components/routes/dashboard";
 import Home from "./components/routes/platform/home";
 import Root from "./components/routes/platform/root";
