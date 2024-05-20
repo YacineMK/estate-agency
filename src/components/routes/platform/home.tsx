@@ -23,28 +23,47 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-
-const name = "lawlawi"
 
 
 
 const Home = () => {
-  useEffect(() => {
-    axios.get('http://localhost:6969/property', {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("authToken")}`
-      }
-    })
-      .then(res => {
-        console.log(res.data);
-      })
-      .catch(err => {
-        console.error(err);
-      });
-  }, []);
+  const [name, setName] = useState('');
+  const [properties, setProperties] = useState([]);
 
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const res = await axios.get('http://localhost:6969/auth/me', {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+          },
+        });
+        console.log(res.data);
+        setName(res.data.data.name);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    const fetchpropertiesData = async () => {
+      try {
+        const reso = await axios.get('http://localhost:6969/property', {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+          },
+        });
+        console.log(reso.data);
+        setProperties(reso.data.data);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    fetchUserData();
+    fetchpropertiesData();
+  }, []);
 
   return (
     <div className="ml-6 mt-6">
@@ -63,6 +82,10 @@ const Home = () => {
                       <Input type="text" placeholder="PropertyType" />
                     </div>
                     <div>
+                      <Label className="mb-10 text-black" >Area</Label>
+                      <Input type="number" placeholder="Area" />
+                    </div>
+                    <div>
                       <Label className="mb-10 text-black" >title</Label>
                       <Input type="text" placeholder="title" />
                     </div>
@@ -72,7 +95,7 @@ const Home = () => {
                     </div>
                     <div>
                       <Label className="mb-10 text-black" >Price</Label>
-                      <Input type="text" placeholder="PropertyType" />
+                      <Input type="number" placeholder="PropertyType" />
                     </div>
                     <div>
                       <Label className="mb-10 text-black" >location</Label>
@@ -129,6 +152,21 @@ const Home = () => {
             <Button>Buy</Button>
           </CardFooter>
         </Card>
+        {properties.map((property) => (
+          <Card key={property.id} className="w-[250px]">
+            <CardHeader>
+              <img alt="property image" className="mb-10 rounded-md" src={property.imageUrl || "/bg.jpg"} />
+              <CardTitle>{property.title}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p>{property.description}</p>
+            </CardContent>
+            <CardFooter className="flex justify-between">
+              <h1 className="text-lg font-semibold">{property.price} DZD</h1>
+              <Button>Buy</Button>
+            </CardFooter>
+          </Card>
+        ))}
       </div>
     </div>
   )
