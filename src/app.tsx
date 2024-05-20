@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom";
 import Admin from "./components/routes/admin";
 import Login from "./components/routes/auth/login";
 import Signup from "./components/routes/auth/signup";
@@ -9,14 +9,19 @@ import Root from "./components/routes/platform/root";
 import { Toaster } from "./components/ui/toaster";
 import Workers from "./components/routes/platform/workers";
 
+const isauth = () => {
+
+  return localStorage.getItem("authToken") !== null;
+}
+
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root />,
+    element: isauth() ? <Root /> : <Navigate to="/login" />,
     children: [
       {
         path: "/",
-        element: <Home />,
+        element: isauth() ? <Home /> : <Navigate to="/login" />,
       },
       {
         path: "real-estate",
