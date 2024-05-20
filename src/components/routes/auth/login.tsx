@@ -12,10 +12,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { DEFAULT_LOGIN_VALUES, LoginValues, loginSchema } from "./data";
-import { toast } from "@/components/ui/use-toast";
+import axios from 'axios';
 import { cn } from "@/lib/utils";;
 
 export default function Login() {
+
   const form = useForm<LoginValues>({
     resolver: zodResolver(loginSchema),
     mode: "onBlur",
@@ -23,16 +24,19 @@ export default function Login() {
   });
 
   function onSubmit(data: LoginValues) {
-    toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-white p-4">
-          <code className="text-black">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-    });
+    axios.post('http://localhost:6969/auth/login', {
+      email: data.email,
+      password: data.password
+    })
+      .then(response => {
+        console.log('Login successful:', response.data);
+        localStorage.setItem("authToken", response.data.data);
+        window.location.href = "/";
+      })
+      .catch(error => {
+        console.error('Error logging in:', error);
+      });
   }
-
   return (
     <div className="w-[100vw] lg:grid flex  bg-white text-black justify-center items-center min-h-screen">
       <div className="flex flex-col p-4 min-h-screen">

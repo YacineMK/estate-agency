@@ -4,7 +4,6 @@ import Login from "./components/routes/auth/login";
 import Signup from "./components/routes/auth/signup";
 import Dashboard from "./components/routes/dashboard";
 import Home from "./components/routes/platform/home";
-import RealEstate from "./components/routes/platform/real-estate";
 import Root from "./components/routes/platform/root";
 import { Toaster } from "./components/ui/toaster";
 import Workers from "./components/routes/platform/workers";
@@ -21,16 +20,12 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: isauth() ? <Home /> : <Navigate to="/login" />,
-      },
-      {
-        path: "real-estate",
-        element: <RealEstate />,
+        element: <Home />,
       },
 
       {
         path: "dashboard",
-        element: <Dashboard />,
+        element: <Dashboard />
       },
       {
         path: "workers",
@@ -38,7 +33,7 @@ const router = createBrowserRouter([
       },
       {
         path: "admin",
-        element: <Admin />,
+        element: <Admin />
       },
     ],
   },
@@ -46,10 +41,10 @@ const router = createBrowserRouter([
     path: "/login",
     element: <Login />,
   },
-  {
-    path: "/signup",
-    element: <Signup />,
-  },
+  // {
+  //   path: "/signup",
+  //   element: <Signup />,
+  // },
 ]);
 
 const App = () => {
