@@ -6,6 +6,7 @@ import Home from "./components/routes/platform/home";
 import Root from "./components/routes/platform/root";
 import { Toaster } from "./components/ui/toaster";
 import Workers from "./components/routes/platform/workers";
+import Clients from "./components/routes/platform/Client";
 
 const isauth = () => {
 
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: "admin",
         element: <Admin />
+      },
+      {
+        path: "/client",
+        element: <Clients />
       },
     ],
   },

@@ -100,79 +100,82 @@ export default function Workers() {
 
 
   return (
-    <div className="mt-6 mx-5 ">
-      <h1 className="text-xl font-semibold">List of Workers</h1>
-      <div className="flex gap-2">
-        <Dialog>
-          <DialogTrigger className="px-4 py-2 bg-[#FF7000] text-white rounded-md">
-            Add Worker
-          </DialogTrigger>
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle>Add Worker</DialogTitle>
-              <DialogDescription className="px-5 py-4">
-                <form className="w-full flex flex-col gap-3" onSubmit={handleSubmit}>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <Label className="mb-2 text-black">Name</Label>
-                      <Input
-                        type="text"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleInputChange}
-                        placeholder="Name"
-                      />
+    <div className="mt-6 mx-5  ">
+      <div className="flex justify-between items-center">
+        <h1 className="text-xl font-semibold">List of Workers</h1>
+        <div className="flex gap-2">
+          <Dialog>
+            <DialogTrigger className="px-4 py-2 bg-[#FF7000] text-white rounded-md">
+              Add Worker
+            </DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Add Worker</DialogTitle>
+                <DialogDescription className="px-5 py-4">
+                  <form className="w-full flex flex-col gap-3" onSubmit={handleSubmit}>
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <Label className="mb-2 text-black">Name</Label>
+                        <Input
+                          type="text"
+                          name="name"
+                          value={formData.name}
+                          onChange={handleInputChange}
+                          placeholder="Name"
+                        />
+                      </div>
+                      <div>
+                        <Label className="mb-2 text-black">Phone</Label>
+                        <Input
+                          type="number"
+                          name="phone"
+                          value={formData.phone}
+                          onChange={handleInputChange}
+                          placeholder="Phone"
+                        />
+                      </div>
+                      <div>
+                        <Label className="mb-2 text-black">Email</Label>
+                        <Input
+                          type="email"
+                          name="email"
+                          value={formData.email}
+                          onChange={handleInputChange}
+                          placeholder="Email"
+                        />
+                      </div>
+                      <div>
+                        <Label className="mb-2 text-black">Password</Label>
+                        <Input
+                          type="password"
+                          name="password"
+                          value={formData.password}
+                          onChange={handleInputChange}
+                          placeholder="Password"
+                        />
+                      </div>
+                      <div>
+                        <Label className="mb-2 text-black">Role</Label>
+                        <Select>
+                          <SelectTrigger>
+                            <SelectValue placeholder="Role" />
+                          </SelectTrigger>
+                          <SelectContent className=" outline-none ">
+                            <SelectItem value="admin">admin</SelectItem>
+                            <SelectItem value="Superadmin">Superadmin</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
                     </div>
-                    <div>
-                      <Label className="mb-2 text-black">Phone</Label>
-                      <Input
-                        type="number"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleInputChange}
-                        placeholder="Phone"
-                      />
-                    </div>
-                    <div>
-                      <Label className="mb-2 text-black">Email</Label>
-                      <Input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        placeholder="Email"
-                      />
-                    </div>
-                    <div>
-                      <Label className="mb-2 text-black">Password</Label>
-                      <Input
-                        type="password"
-                        name="password"
-                        value={formData.password}
-                        onChange={handleInputChange}
-                        placeholder="Password"
-                      />
-                    </div>
-                    <div>
-                      <Label className="mb-2 text-black">Role</Label>
-                      <Select>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Role" />
-                        </SelectTrigger>
-                        <SelectContent className=" outline-none ">
-                          <SelectItem value="admin">admin</SelectItem>
-                          <SelectItem value="Superadmin">Superadmin</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                  </div>
-                  <Button type="submit" className="mt-4">Submit</Button>
-                </form>
-              </DialogDescription>
-            </DialogHeader>
-          </DialogContent>
-        </Dialog>
+                    <Button type="submit" className="mt-4">Submit</Button>
+                  </form>
+                </DialogDescription>
+              </DialogHeader>
+            </DialogContent>
+          </Dialog>
+        </div>
       </div>
+
       <div className="mt-6">
         {workers.length === 0 ? (
           <p>No workers found.</p>

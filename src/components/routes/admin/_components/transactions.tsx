@@ -1,4 +1,3 @@
-
 import { Badge } from "@/components/ui/badge";
 import {
   Card,
@@ -15,10 +14,28 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import axios from 'axios';
 
-import { Transaction } from "@/data/db";
+import { useEffect, useState } from "react"; // Import useState if not already imported
+
 
 export default function Transactions() {
+  const [transactions, setTransactions] = useState([]);
+
+  useEffect(() => {
+    const fetchTransactions = async () => {
+      try {
+        const res = await axios.get('https://soyed-back.onrender.com/transaction');
+        setTransactions(res.data); // Update state with fetched data
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    fetchTransactions();
+  }, []);
+
+
   return (
     <Card className="xl:max-w-xl bg-white text-black 2xl:max-w-full">
       <CardHeader className="flex flex-row gap-6 space-y-0">
@@ -26,7 +43,7 @@ export default function Transactions() {
           <CardTitle>Transactions</CardTitle>
           <CardDescription
             className="line-clamp-2"
-            title="Les cinq derniers transactions signés aujourd'hui"
+            title="last five transactions today"
           >
             Les cinq derniers transactions signés aujourd'hui
           </CardDescription>
@@ -45,7 +62,7 @@ export default function Transactions() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {Transaction.map(
+            {transactions.map(
               ({
                 idTransaction,
                 idPropriete,
@@ -54,10 +71,8 @@ export default function Transactions() {
                 typeTransaction,
                 montant,
               }) => (
-                <TableRow>
-                  <TableCell>
-                    <div>{idTransaction}</div>
-                  </TableCell>
+                <TableRow key={idTransaction}>
+                  <TableCell>{idTransaction}</TableCell>
                   <TableCell>{idPropriete}</TableCell>
                   <TableCell>{idVendeur}</TableCell>
                   <TableCell>{idAcheteur}</TableCell>
@@ -71,7 +86,6 @@ export default function Transactions() {
                       {typeTransaction}
                     </Badge>
                   </TableCell>
-
                   <TableCell className="text-right">{montant}DA</TableCell>
                 </TableRow>
               )
