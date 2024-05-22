@@ -24,7 +24,7 @@ export default function Login() {
   });
 
   function onSubmit(data: LoginValues) {
-    axios.post('http://localhost:6969/auth/login', {
+    axios.post('https://soyed-back.onrender.com/auth/login', {
       email: data.email,
       password: data.password
     })
