@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Contracts from "./_components/contracts";
 import Transactions from "./_components/transactions";
 import {
@@ -29,7 +29,11 @@ const Admin = () => {
 
   const handleSubmit = async () => {
     try {
-      const res = await axios.post('https://soyed-back.onrender.com/transaction', formData);
+      const res = await axios.post('https://soyed-back.onrender.com/transaction', formData, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+        },
+      });
       console.log('Transaction added successfully:', res.data);
     } catch (err) {
       console.error('Error adding transaction:', err);

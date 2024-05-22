@@ -22,21 +22,7 @@ export const Agents: AgentProps[] = [
     Agentname: "Agent Anderson",
     TransactionsbyAgent: 92
   },
-  {
-    idAgent: 5,
-    Agentname: "Agent Thompson",
-    TransactionsbyAgent: 78
-  },
-  {
-    idAgent: 6,
-    Agentname: "Agent White",
-    TransactionsbyAgent: 63
-  },
-  {
-    idAgent: 7,
-    Agentname: "Agent Jones",
-    TransactionsbyAgent: 81
-  }
+
 ]
 
 export const Transaction: TransactionProps[] = [

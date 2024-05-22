@@ -25,7 +25,7 @@ export default function Transactions() {
   useEffect(() => {
     const fetchTransactions = async () => {
       try {
-        const res = await axios.get('http://localhost:6969/transaction');
+        const res = await axios.get('https://soyed-back.onrender.com/transaction');
         setTransactions(res.data);
       } catch (err) {
         console.log(err);
@@ -34,7 +34,7 @@ export default function Transactions() {
 
     const postTransactions = async () => {
       try {
-        const res = await axios.post('http://localhost:6969/transaction');
+        const res = await axios.post('https://soyed-back.onrender.com/transaction');
         setTransactions(res.data);
       } catch (err) {
         console.log(err);
@@ -90,7 +90,7 @@ export default function Transactions() {
                       {typeTransaction}
                     </Badge>
                   </TableCell>
-                  <TableCell className="text-right">{montant || 200000}DA</TableCell>
+                  <TableCell className="text-right">{montant}DA</TableCell>
                 </TableRow>
               )
             )}

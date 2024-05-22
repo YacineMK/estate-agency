@@ -34,7 +34,7 @@ const Home = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const res = await axios.get('http://localhost:6969/auth/me', {
+        const res = await axios.get('https://soyed-back.onrender.com/auth/me', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("authToken")}`,
           },
@@ -48,7 +48,7 @@ const Home = () => {
 
     const fetchPropertiesData = async () => {
       try {
-        const res = await axios.get('http://localhost:6969/property', {
+        const res = await axios.get('https://soyed-back.onrender.com/property', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("authToken")}`,
           },
@@ -165,7 +165,18 @@ const Home = () => {
             </CardContent>
             <CardFooter className="flex justify-between">
               <h1 className="text-lg font-semibold">{property.price} DZD</h1>
-              <Button>Buy</Button>
+              <Button>
+                <Select >
+                  <SelectTrigger className="bg-[#FF7000] outline-none text-white border-none">
+                    <SelectValue placeholder="Status" />
+                  </SelectTrigger>
+                  <SelectContent className="bg-[#FF7000] text-white outline-none">
+                    <SelectItem value="NotAssigned">NotAssigned</SelectItem>
+                    <SelectItem value="Assigned">Assigned</SelectItem>
+                    <SelectItem value="Confirmed">Confirmed</SelectItem>
+                  </SelectContent>
+                </Select>
+              </Button>
             </CardFooter>
           </Card>
         ))}
