@@ -77,7 +77,7 @@ export default function Clients() {
         e.preventDefault();
         try {
             const res = await axios.post(
-                "https://soyed-back.onrender.com/client",
+                "http://localhost:6969/client",
                 formData,
                 {
                     headers: {
@@ -96,7 +96,7 @@ export default function Clients() {
     return (
         <div className="mt-6 mx-5  ">
             <div className="flex justify-between items-center">
-                <h1 className="text-xl font-semibold">List of Workers</h1>
+                <h1 className="text-xl font-semibold">List of client</h1>
                 <div className="flex gap-2">
                     <Dialog>
                         <DialogTrigger className="px-4 py-2 bg-[#FF7000] text-white rounded-md">

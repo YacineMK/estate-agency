@@ -8,7 +8,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog"
+} from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import axios from 'axios';
@@ -36,22 +36,10 @@ const Admin = () => {
     }
   };
 
-  useEffect(() => {
-    const fetchTransactions = async () => {
-      try {
-        const res = await axios.post('https://soyed-back.onrender.com/transaction');
-      } catch (err) {
-        console.log(err);
-      }
-    };
-
-    fetchTransactions();
-  }, []);
-
   return (
     <div className="space-y-4">
-      <div className="flex h-[70px] justify-between items-center ">
-        <h1 className='font-semibold text-xl mb-12 '>Admin </h1>
+      <div className="flex h-[70px] justify-between items-center">
+        <h1 className='font-semibold text-xl mb-12'>Admin</h1>
         <Dialog>
           <DialogTrigger className="px-4 py-2 bg-[#FF7000] text-white rounded-md">Add Transactions</DialogTrigger>
           <DialogContent>
@@ -59,21 +47,21 @@ const Admin = () => {
               <DialogTitle>Are you absolutely sure?</DialogTitle>
               <DialogDescription className="px-5 py-4">
                 <div>
-                  <Label className="mb-2 text-black">contractId</Label>
+                  <Label className="mb-2 text-black">Contract ID</Label>
                   <Input
                     type="text"
                     name="contractId"
-                    placeholder="contractId"
+                    placeholder="Contract ID"
                     value={formData.contractId}
                     onChange={handleInputChange}
                   />
                 </div>
                 <div>
-                  <Label className="mb-2 text-black">date</Label>
+                  <Label className="mb-2 text-black">Date</Label>
                   <Input
                     type="date"
                     name="date"
-                    placeholder="date"
+                    placeholder="Date"
                     value={formData.date}
                     onChange={handleInputChange}
                   />

@@ -2,13 +2,13 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
+} from "@/components/ui/card";
+import { useEffect, useState } from "react";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis } from 'recharts';
-
+import axios from "axios";
 
 const data = [
   {
@@ -95,53 +95,101 @@ const dato = [
 ];
 
 const Dashboard = () => {
+  const [transactions, setTransactions] = useState(0);
+  const [clients, setClients] = useState(0);
+  const [agents, setAgents] = useState(0);
+  const [properties, setProperties] = useState(0);
+
+  useEffect(() => {
+    const fetchTransactions = async () => {
+      try {
+        const res = await axios.get('https://soyed-back.onrender.com/transaction');
+        setTransactions(res.data.length);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    const fetchAgents = async () => {
+      try {
+        const res = await axios.get('https://soyed-back.onrender.com/agent');
+        setAgents(res.data.length);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    const fetchClients = async () => {
+      try {
+        const res = await axios.get('https://soyed-back.onrender.com/client');
+        setClients(res.data.length);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    const fetchProperties = async () => {
+      try {
+        const res = await axios.get('https://soyed-back.onrender.com/property');
+        setProperties(res.data.length);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    fetchTransactions();
+    fetchAgents();
+    fetchClients();
+    fetchProperties();
+  }, []);
+
   return (
     <div className="flex flex-col mx-[2%]">
-
-      <h1 className='font-semibold text-xl mb-8 '>Dashboard</h1>
-      <h1 className='pl-4 font-medium text-lg mb-8 '>Weekly Rapport</h1>
+      <h1 className='font-semibold text-xl mb-8'>Dashboard</h1>
+      <h1 className='pl-4 font-medium text-lg mb-8'>Weekly Rapport</h1>
 
       <div className="flex w-full justify-center mb-10 gap-8">
         <Card className="w-[350px] py-2 text-left">
           <CardHeader>
             <CardTitle className="mb-2">Agents</CardTitle>
-            <CardDescription className="text-md font-medium">all Agents</CardDescription>
+            <CardDescription className="text-md font-medium">All Agents</CardDescription>
           </CardHeader>
           <CardContent>
-            <p className="font-bold text-4xl">+30</p>
+            <p className="font-bold text-4xl">{agents}</p>
           </CardContent>
         </Card>
         <Card className="w-[350px] py-2 text-left">
           <CardHeader>
             <CardTitle className="mb-2">Clients</CardTitle>
-            <CardDescription className="text-md font-medium">all Clients</CardDescription>
+            <CardDescription className="text-md font-medium">All Clients</CardDescription>
           </CardHeader>
           <CardContent>
-            <p className="font-bold text-4xl">+600</p>
+            <p className="font-bold text-4xl">{clients}</p>
           </CardContent>
         </Card>
         <Card className="w-[350px] py-2 text-left">
           <CardHeader>
             <CardTitle className="mb-2">Property</CardTitle>
-            <CardDescription className="text-md font-medium ">all property</CardDescription>
+            <CardDescription className="text-md font-medium">All Property</CardDescription>
           </CardHeader>
           <CardContent>
-            <p className="font-bold text-4xl">+54</p>
+            <p className="font-bold text-4xl">{properties}</p>
           </CardContent>
         </Card>
         <Card className="w-[350px] py-2 text-left">
           <CardHeader>
             <CardTitle className="mb-2">Transaction</CardTitle>
-            <CardDescription className="text-md font-medium">all Transaction</CardDescription>
+            <CardDescription className="text-md font-medium">All Transactions</CardDescription>
           </CardHeader>
           <CardContent>
-            <p className="font-bold text-4xl">+200</p>
+            <p className="font-bold text-4xl">{transactions}</p>
           </CardContent>
         </Card>
       </div>
-      <h1 className='pl-4 font-medium text-lg mb-10 '>Rapport</h1>
+
+      <h1 className='pl-4 font-medium text-lg mb-10'>Rapport</h1>
       <div className="flex justify-around">
-        <div className=' w-[700px] h-[400px] rounded-md border border-black '>
+        <div className='w-[700px] h-[400px] rounded-md border border-black'>
           <ResponsiveContainer className="pt-6 pb-4 px-4" width="100%" height="100%">
             <LineChart
               data={data}
@@ -162,7 +210,7 @@ const Dashboard = () => {
             </LineChart>
           </ResponsiveContainer>
         </div>
-        <div className=' w-[700px] h-[400px] rounded-md border border-black '>
+        <div className='w-[700px] h-[400px] rounded-md border border-black'>
           <ResponsiveContainer width="100%" height="100%">
             <RadarChart cx="50%" cy="50%" outerRadius="80%" data={dato}>
               <PolarGrid />
