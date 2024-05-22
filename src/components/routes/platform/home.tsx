@@ -13,6 +13,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
+
 import {
   Card,
   CardContent,
@@ -35,7 +36,7 @@ const Home = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const res = await axios.get('http://localhost:6969/auth/me', {
+        const res = await axios.get('https://soyed-back.onrender.com/auth/me', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("authToken")}`,
           },
@@ -49,7 +50,7 @@ const Home = () => {
 
     const fetchpropertiesData = async () => {
       try {
-        const reso = await axios.get('http://localhost:6969/property', {
+        const reso = await axios.get('https://soyed-back.onrender.com/property', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("authToken")}`,
           },
@@ -59,10 +60,11 @@ const Home = () => {
       } catch (err) {
         console.error(err);
       }
-    };
+    }; 
 
     fetchUserData();
     fetchpropertiesData();
+
   }, []);
 
   return (
@@ -139,23 +141,10 @@ const Home = () => {
         </Dialog>
       </div>
       <div className="mx-6 mt-10 grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <Card className="w-[250]">
-          <CardHeader>
-            <img alt="property image" className="mb-10 rounded-md" src="/bg.jpg" />
-            <CardTitle>F3 dergana</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p>Card Content description lwalawi hhhh nigro ...</p>
-          </CardContent>
-          <CardFooter className="flex justify-between ">
-            <h1 className="text-lg font-semibold">{124000}dzd</h1>
-            <Button>Buy</Button>
-          </CardFooter>
-        </Card>
         {properties.map((property) => (
-          <Card key={property.id} className="w-[250px]">
+          <Card key={property.id} className="w-[350px]">
             <CardHeader>
-              <img alt="property image" className="mb-10 rounded-md" src={property.imageUrl || "/bg.jpg"} />
+              <img alt="property image" className="mb-10 rounded-md" src={property.imageUrl || "1.png"} />
               <CardTitle>{property.title}</CardTitle>
             </CardHeader>
             <CardContent>
